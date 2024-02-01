@@ -1,0 +1,231 @@
+body {
+    background-color: #121213;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #f3f3f3;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* background-color: #212529; */
+}
+
+hr {
+    /* margin-top: 1rem; */
+    width: 20rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 20rem;
+    /* border: 1px solid rgba(0, 0, 0, 0.7); */
+}
+
+.cell {
+    width: 3rem;
+    height: 3rem;
+    border: .1rem solid #6c757d;
+    margin: .2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3f3f3;
+    border-color: #6c757d;
+    font-size: 2.5rem;
+    font-weight: bold;
+    /* transition: trans 0.3s ease-in-out; */
+}
+
+
+
+.selected {
+    border-color: green;
+    color: #6c757d;
+}
+#answer {
+    visibility: hidden;
+}
+
+#reset {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #6c757d;
+    color: #f3f3f3;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.shaking {
+    animation: shake 0.2s;
+}
+
+.flipping {
+    animation: flip 0.5s ease-in forwards;
+}
+
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-0.5rem);
+    }
+
+    50% {
+        transform: translateX(0.5rem);
+    }
+
+    75% {
+        transform: translateX(-0.5rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotateX(180deg);
+        opacity: 1;
+    }
+
+    /* 100% {
+        transform: rotateX(360deg);
+        opacity: 1;
+    } */
+}
+
+@keyframes keyPress {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 25rem;
+    padding-top: 2rem;
+    /* border: 1px solid rgba(0, 0, 0, 0.7); */
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 25rem;
+}
+
+.key {
+    border: .1rem solid #35393c;
+    border-radius: .5rem;
+    background-color: #35393c;
+    margin: .2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3f3f3;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 2rem;
+    height: 2.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+#Enter {
+    /* border: .1rem solid #6c757d; */
+    margin: .2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3f3f3;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 4rem;
+    /* height: 2rem; */
+    /* transition: all 0.3s ease-in-out; */
+}
+
+#Backspace {
+    /* border: .1rem solid #6c757d; */
+    margin: .2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3f3f3;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 4rem;
+    /* height: 2rem; */
+    /* transition: all 0.3s ease-in-out; */
+}
+
+.key.active:hover {
+    /* border: .1rem solid #6c757d; */
+    border-color: #6c757d;
+}
+.key.active:active {
+    transform: scale(0.9);
+}
+
+.correct {
+    background-color: #6aaa64;
+    color: #f3f3f3;
+}
+
+.present {
+    background-color: #f9c74f;
+    color: #f3f3f3;
+}
+
+.absent {
+    background-color: #6c757d;
+    color: #f3f3f3;
+}
