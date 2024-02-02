@@ -178,15 +178,15 @@ function processKey(e) {
     e.code == "ArrowLeft"
   ) {
     if (c > 0) {
-      if(c<w) {
+      if (c < w) {
         curSelected = document.getElementById(r + "-" + c);
         curSelected.classList.remove("selected");
       }
-      if(c>0) c--;
+      if (c > 0) c--;
       curSelected = document.getElementById(r + "-" + c);
       curSelected.classList.add("selected");
-      curSelected.innerText="";
-      }
+      curSelected.innerText = "";
+    }
   } else if (e.code == "Enter") {
     if (c != w) return;
     let guess = "";
@@ -215,30 +215,30 @@ function processKey(e) {
     curSelected = document.getElementById(r + "-" + c);
     curSelected.classList.remove("selected");
     //update();
-    update();
-    nextRow();
-    c = 0;
-    if (r < h) {
-      curSelected = document.getElementById(r + "-" + c);
-      curSelected.classList.add("selected");
-    }
-    setTimeout(() => {}, 500);
-  }
+    update(() => {
+      nextRow();
+      c = 0;
+      if (r < h) {
+        curSelected = document.getElementById(r + "-" + c);
+        curSelected.classList.add("selected");
+      }
+    });
 
-  // console.log(r, c);
+  }
 
   if (!over && r == h) {
     over = true;
-    document.getElementById("reveal").style.display = "none";
-    document.getElementById("answer").innerText =
-      "Answer: " + word + "<br/>Better luck next time.";
-    document.getElementById("answer").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("reveal").style.display = "none";
+      document.getElementById("answer").innerText =
+        "Answer: " + word + "<br/>Better luck next time.";
+      document.getElementById("answer").style.display = "block";
+    }, (w - 1) * 300 + 250);
   }
 }
 
-function update() {
+function update(callback) {
   let mp = {};
-  // let keys=document.getElementsByClassName("key");
   let state = [5];
   for (let i = 0; i < w; i++) {
     let x = word[i];
@@ -250,8 +250,6 @@ function update() {
     let x = curSelected.innerText;
     let letter = x[0];
     if (word[i] == letter) {
-      //console.log(letter,word[i]);
-      //curSelected.classList.add("correct");
       state[i] = "c";
       correct++;
       mp[letter]--;
@@ -263,51 +261,15 @@ function update() {
     let x = curSelected.innerText;
     let letter = x[0];
     if (word.includes(letter) && mp[letter] > 0) {
-      // curSelected.classList.add("present");
       state[i] = "p";
       mp[letter]--;
     } else {
-      // curSelected.classList.add("wrong");
       state[i] = "w";
     }
   }
-  //console.log(state);
 
-  for (let j = 0; j < w; j++) {
-    curSelected = document.getElementById(r + "-" + j);
-    curSelected.classList.add("flipping");
-    let corrKey = document.getElementById("Key" + curSelected.innerText);
-    corrKey.classList.add("flipping");
-    setTimeout(function () {
-      curSelected.classList.remove("flipping");
-      corrKey.classList.remove("flipping");
-    }, 200);
-  }
-
-
-
-  for (let i = 0; i < w; i++) {
-    curSelected = document.getElementById(r + "-" + i);
-    let corrKey = document.getElementById("Key" + curSelected.innerText);
-    if (state[i] == "c") {
-      curSelected.classList.add("correct");
-      corrKey.classList.add("correct");
-    } else if (state[i] == "p") {
-      curSelected.classList.add("present");
-      corrKey.classList.add("present");
-    } else if (state[i] == "w") {
-      curSelected.classList.add("absent");
-      corrKey.classList.add("absent");
-    }
-  }
-
-  if (correct == w) {
-    over = true;
-    document.getElementById("keyboard").style.display = "none";
-    document.getElementById("reveal").style.display = "none";
-    document.getElementById("answer").innerText = "You won! Congratulations!";
-    document.getElementById("answer").style.display = "block";
-  }
+  setSyncAnim(state, correct);
+  callback();
 }
 
 function nextRow() {
@@ -326,7 +288,53 @@ function nextRow() {
   }
 }
 
+function flip(e, f) {
+  e.classList.add("flipping");
+  f.classList.add("flipping");
+  setTimeout(function () {
+    e.classList.remove("flipping");
+    f.classList.remove("flipping");
+  }, 500);
+}
 
+function changeolor(e, f, s) {
+  if (s == "c") {
+    e.classList.add("correct");
+    f.classList.add("correct");
+  } else if (s == "p") {
+    e.classList.add("present");
+    f.classList.add("present");
+  } else if (s == "w") {
+    e.classList.add("absent");
+    f.classList.add("absent");
+  }
+}
+
+function setSyncAnim(state, correct) {
+  let cells = [],
+    keys = [];
+  for (let i = 0; i < w; i++) {
+    cells.push(document.getElementById(r + "-" + i));
+    keys.push(document.getElementById("Key" + cells[i].innerText));
+  }
+  for (let i = 0; i < w; i++) {
+    setTimeout(() => {
+      flip(cells[i], keys[i]);
+    }, i * 300);
+    setTimeout(() => {
+      changeolor(cells[i], keys[i], state[i]);
+    }, i * 300 + 250);
+  }
+  if (correct == w) {
+    over = true;
+    setTimeout(() => {
+      document.getElementById("keyboard").style.display = "none";
+      document.getElementById("reveal").style.display = "none";
+      document.getElementById("answer").innerText = "You won! Congratulations!";
+      document.getElementById("answer").style.display = "block";
+    }, (w - 1) * 300 + 250);
+  }
+}
 
 // function calculateScore() {
 
@@ -336,7 +344,5 @@ function nextRow() {
 //   const popUp=document.getElementsByClassName("pop-up");
 //   const title= document.getElementsByClassName("pop-up-title");
 //   const content=document.getElementsByClassName("pop-up-content");
-  
+
 // }
-
-
