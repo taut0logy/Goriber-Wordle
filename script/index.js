@@ -99,7 +99,7 @@ revealbtn.addEventListener("click", () => {
 
 function setup() {
   word = word.toUpperCase();
-
+  console.log(word);
   //initialize board
 
   for (let i = 0; i < h; i++) {
@@ -157,6 +157,11 @@ function setup() {
 function processKey(e) {
   if (over) return;
   if ("KeyA" <= e.code && e.code <= "KeyZ") {
+    const corKey=document.getElementById("Key"+e.code[3].toString().toUpperCase());
+    corKey.classList.add("pressed");
+    setTimeout(function(){
+      corKey.classList.remove("pressed");
+    },200);
     if (c < w) {
       curSelected.innerText = e.code[3].toString().toUpperCase();
       if (c < w - 1) {
