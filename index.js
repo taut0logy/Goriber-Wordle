@@ -85,8 +85,6 @@ let r = 0,
 
 let over = false;
 
-//let word = JSON.parse(fs.readFileSync("words.json", "utf8"))[Math.floor(Math.random() * words.length)];
-
 let curSelected = null;
 
 const revealbtn = document.getElementById("reveal");
@@ -98,8 +96,6 @@ revealbtn.addEventListener("click", () => {
     "Answer: " + word + "<br/>" + "Better luck next time.";
   document.getElementById("answer").style.display = "block";
 });
-
-//document.onload = setup();
 
 function setup() {
   word = word.toUpperCase();
@@ -214,7 +210,6 @@ function processKey(e) {
     c--;
     curSelected = document.getElementById(r + "-" + c);
     curSelected.classList.remove("selected");
-    //update();
     update(() => {
       nextRow();
       c = 0;
@@ -335,14 +330,3 @@ function setSyncAnim(state, correct) {
     }, (w - 1) * 300 + 250);
   }
 }
-
-// function calculateScore() {
-
-// }
-
-// function showPopUp(msg) {
-//   const popUp=document.getElementsByClassName("pop-up");
-//   const title= document.getElementsByClassName("pop-up-title");
-//   const content=document.getElementsByClassName("pop-up-content");
-
-// }
