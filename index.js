@@ -99,7 +99,7 @@ revealbtn.addEventListener("click", () => {
 
 function setup() {
   word = word.toUpperCase();
-  console.log(word);
+
   //initialize board
 
   for (let i = 0; i < h; i++) {
@@ -228,7 +228,7 @@ function processKey(e) {
       document.getElementById("answer").innerText =
         "Answer: " + word + "<br/>Better luck next time.";
       document.getElementById("answer").style.display = "block";
-    }, (w - 1) * 300 + 250);
+    }, (w - 1) * 300 + 250 + 100);
   }
 }
 
@@ -327,6 +327,6 @@ function setSyncAnim(state, correct) {
       document.getElementById("reveal").style.display = "none";
       document.getElementById("answer").innerText = "You won! Congratulations!";
       document.getElementById("answer").style.display = "block";
-    }, (w - 1) * 300 + 250);
+    }, (w - 1) * 300 + 250 + 100);
   }
 }
