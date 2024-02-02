@@ -6,9 +6,9 @@ Goriber Wordle is a word game where you have to guess a word. You have 6 chances
 
 ## The Project was built With
 
--Html
--Css
--Javascript
+- Html
+- Css
+- Javascript
 
 ## Key Concepts Covered:
 
@@ -34,5 +34,5 @@ Goriber Wordle is a word game where you have to guess a word. You have 6 chances
 - Error Handling
 - ES6+ Syntax
 
-## The Project was Hosted on github pages. [Goriber Wordle](https://taut0logy.github.io/goriber-wordle/)
+## The Project was Hosted on github pages: [Goriber Wordle](https://taut0logy.github.io/goriber-wordle/)
 
