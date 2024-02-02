@@ -34,6 +34,8 @@ Goriber Wordle is a word game where you have to guess a word. You have 6 chances
 - Error Handling
 - ES6+ Syntax
 
-## The Project was Hosted on github pages: 
-([https://taut0logy.github.io/goriber-wordle/](https://taut0logy.github.io/Goriber-Wordle/))
+You can view the website [here](https://goriber-wordle.000webhostapp.com/)
+
+<!-- ## The Project was Hosted on github pages: 
+([https://taut0logy.github.io/goriber-wordle/](https://taut0logy.github.io/Goriber-Wordle/)) -->
 
