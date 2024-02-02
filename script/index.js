@@ -49,7 +49,7 @@ const trie = new Trie();
 let word;
 
 Promise.all([
-  fetch("wordTrie.json")
+  fetch("asset/wordTrie.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error("HTTP error " + response.status);
@@ -60,7 +60,7 @@ Promise.all([
       trie.root = json;
     }),
 
-  fetch("words.json")
+  fetch("asset/words.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error("HTTP error " + response.status);
@@ -293,6 +293,9 @@ function flip(e, f) {
 }
 
 function changeolor(e, f, s) {
+  f.classList.remove("correct");
+  f.classList.remove("present");
+  f.classList.remove("absent");
   if (s == "c") {
     e.classList.add("correct");
     f.classList.add("correct");
