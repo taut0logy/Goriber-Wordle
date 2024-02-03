@@ -38,16 +38,16 @@ body {
 @keyframes flip {
   0% {
     /* transform: rotateX(0); */
-    opacity: 0;
+    color: #ffffff00;
   }
 
   50% {
     transform: rotatey(180deg);
-    opacity: 1;
+    color: #ffffff00;
   }
   100% {
-        transform: rotatey(360deg);
-        opacity: 1;
+        transform: rotatey(0deg);
+        color: #ffffffff;
 
     }
 }
@@ -69,6 +69,20 @@ body {
   }
 }
 
+@keyframes cellPress {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 @keyframes blinking {
   0% {
     color: #ffffff;
@@ -87,6 +101,7 @@ hr {
   /* margin-top: 1rem; */
   width: 20rem;
   border-top: 1px solid rgba(0, 0, 0, 0.7);
+  caret-color: transparent;
 }
 
 .title {
@@ -96,12 +111,14 @@ hr {
   line-height: 1.2;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  caret-color: transparent;
 }
 
 section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  caret-color: transparent;
 }
 
 #board {
@@ -119,7 +136,8 @@ section {
   height: 3rem;
   border: 0.1rem solid #6c757d;
   margin: 0.2rem;
-  cursor: pointer;
+  cursor: default;
+  caret-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,6 +145,7 @@ section {
   border-color: #6c757d;
   font-size: 2.5rem;
   font-weight: bold;
+  transform-style: preserve-3d;
   /* transition: trans 0.3s ease-in-out; */
 }
 
@@ -157,6 +176,7 @@ section {
   width: 25rem;
   max-width: 90%;
   padding-top: 2rem;
+  cursor:default;
 }
 
 .keyboard-row {
@@ -174,6 +194,7 @@ section {
   margin: 0.2rem;
   padding: 0 0.2rem;
   cursor: pointer;
+  caret-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,8 +204,9 @@ section {
   width: auto;
   min-width: 1.5rem;
   max-width: 6rem;
-  height: auto;
+  height: 2rem;
   min-height: 2.5rem;
+  transform-style: preserve-3d;
   /* transition: transform 0.3s ease-in-out; */
 }
 
@@ -193,12 +215,16 @@ section {
 }
 
 .flipping {
-  animation: flip 0.5s ease-in forwards;
+  animation: flip 1s ease-in forwards;
 }
 
 
 .pressed {
   animation: keyPress 0.3s ease-in forwards;
+}
+
+.cellpressed {
+  animation: cellPress 0.1s ease forwards;
 }
 
 .selected {
@@ -254,10 +280,17 @@ section {
 }
 
 #reveal {
+  display: none;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 12rem;
   max-width: 90%;
+}
+
+#answerText {
+  /* margin-top: 1rem; */
+  text-align: center;
+  font-weight: bold;
 }
 
 .pop-up {
@@ -280,7 +313,7 @@ section {
   animation: pop 0.3s ease-in-out;
 }
 
-.pop-up h3 {
+.pop-up-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -288,7 +321,7 @@ section {
 
 .pop-up p {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 @keyframes pop {
@@ -304,8 +337,7 @@ section {
 }
 
 .pop-up-close {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
+  /* padding: 0.5rem 1rem;
   border: .1rem solid #6c757d;
   border-radius: 0.2rem;
   background-color: #6c757d;
@@ -313,5 +345,5 @@ section {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; */
 }

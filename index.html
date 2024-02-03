@@ -7,9 +7,12 @@
     <meta name="author" content="Raufun Ahsan" />
     <link rel="stylesheet" href="/style/index.css" />
     <link rel="icon" href="/icon/wordle-icon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <h1 class="title">Goriber Wordle</h1>
@@ -17,13 +20,14 @@
     <section class="main">
       <div id="board"></div>
       <div id="keyboard"></div>
-      <h1 id="answer" answer><span id="answerText"></span></h1>
       <span class="key active" id="reveal">Reveal Answer</span>
+      <h1 id="answer" answer></h1>
+      <p id="answerText"></p>
       <div class="pop-up">
-            <h3 class="pop-up-title">Congratulations!</h1>
-            <p class="pop-up-text">You have completed the game.</p>
-            <span class="pop-up-close key active">Close</span>
-    </div>
+        <span class="pop-up-title">Congratulations!</span>
+        <p class="pop-up-text">You have completed the game.</p>
+        <span class="pop-up-close key active">Close</span>
+      </div>
     </section>
     <script src="/script/index.js"></script>
   </body>
