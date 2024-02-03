@@ -64,7 +64,7 @@ Promise.all([
     })
     .then((json) => {
       trie.root = json;
-      //word=trie.getRandomWord();
+      word=trie.getRandomWord();
     }),
 
   // fetch("asset/words.json")
@@ -111,7 +111,7 @@ revealbtn.addEventListener("click", () => {
 
 function setup() {
   word = word.toUpperCase();
-  console.log(word);
+  //console.log(word);
   //initialize board
 
   for (let i = 0; i < h; i++) {
