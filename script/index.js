@@ -64,7 +64,7 @@ Promise.all([
     })
     .then((json) => {
       trie.root = json;
-      word=trie.getRandomWord();
+      //word=trie.getRandomWord();
     }),
 
   // fetch("asset/words.json")
